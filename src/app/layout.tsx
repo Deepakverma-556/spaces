@@ -11,7 +11,7 @@ export const metadata: Metadata = {
       {
         url: "./meta.png",
         height: 600,
-        width: 600,
+        width: 800,
         alt: "meta",
       },
     ],

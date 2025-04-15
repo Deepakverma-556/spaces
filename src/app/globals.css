@@ -1,26 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  font-family: "Inter", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-purple: rgba(100, 13, 249, 1);
+  --color-darkPink: rgba(235, 8, 141, 1);
+  --color-pink: rgba(205, 12, 167, 1);
+  --color-customBlue: rgba(63 2 203);
+  --color-offWhite: rgba(245, 246, 250, 1);
+  --color-lightPurple: rgba(229, 222, 250);
+  --color-lightBlue: rgba(79, 2, 254, 0.08);
+  --color-gray: rgba(101 53 213);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+select {
+  background-image: url("/assets/svg/drop-down.svg");
+  background-repeat: no-repeat;
+  background-size: 12px 6px !important;
+  background-position-x: 80%;
+  background-position-y: 50%;
 }

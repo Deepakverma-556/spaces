@@ -20,9 +20,9 @@ const ProgramTwo = () => {
     const difference = sellingPrice - costPrice;
 
     if (difference > 0) {
-      setResult(`Profit: ₹${difference.toFixed(2)}`);
+      setResult(`Profit: Rs${difference.toFixed(2)}`);
     } else if (difference < 0) {
-      setResult(`Loss: ₹${Math.abs(difference).toFixed(2)}`);
+      setResult(`Loss: Rs${Math.abs(difference).toFixed(2)}`);
     } else {
       setResult("No Profit, No Loss.");
     }

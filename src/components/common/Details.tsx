@@ -1,7 +1,45 @@
+"use client";
 import { TABLE_DATA_LIST, TABLE_HEADING_LIST } from "@/utils/helper";
 import { Delete, TopArrow, TopBottom } from "@/utils/icons";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 function Details() {
+  const [search, setSearch] = useState("");
+  const [data, setData] = useState<any[]>([]);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    setData(data);
+    const searchParam = searchParams.get("search");
+    if (searchParam) {
+      setSearch(searchParam);
+    }
+  }, [data || searchParams]);
+
+  const filteredData = data.filter(
+    (obj: any) =>
+      obj.name?.toLowerCase().includes(search.toLowerCase()) ||
+      obj.country?.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const deleteHandler = (index: number) => {
+    setData((prevData) => prevData.filter((_, i) => i !== index));
+  };
+  const searchHandler = (e: any) => {
+    const value = e.target.value;
+    setSearch(value);
+
+    const params = new URLSearchParams(window.location.search);
+    if (value) {
+      params.set("search", value);
+    } else {
+      params.delete("search");
+    }
+
+    window.history.pushState(null, "", `?${params.toString()}`);
+  };
+
   return (
     <div className="max-w-[969px] w-full flex flex-col justify-between">
       <div className="bg-white max-h-max pb-[23px] w-full rounded-[6px] border border-white shadow-[0px_16px_53.7px_0px] shadow-lightBlue">
@@ -17,6 +55,7 @@ function Details() {
             Enter per page
           </p>
           <input
+            onChange={searchHandler}
             type="text"
             placeholder="Find"
             className="border-[0.8px] rounded-full border-black/20 font-medium text-sm text-black placeholder:text-black px-[17px] py-3 max-w-[320px] w-full"
@@ -76,16 +115,21 @@ function Details() {
                       <TopArrow />
                     </span>
                   </span>
-                  <Delete />
+                  <button
+                    onClick={() => deleteHandler(i)}
+                    className="cursor-pointer group"
+                  >
+                    <Delete myClass="transition-all duration-300 group-hover:fill-red-600" />
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-          </div>
-          <div>
-              <button>Prev</button>
-          </div>
+      </div>
+      <div>
+        <button>Prev</button>
+      </div>
     </div>
   );
 }

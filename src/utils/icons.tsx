@@ -1,3 +1,7 @@
+interface myIcons {
+  myClass?: string;
+}
+
 export const GuidesIcon = () => (
   <svg
     width="14"
@@ -100,7 +104,7 @@ export const TopArrow = () => (
   </svg>
 );
 
-export const Delete = () => (
+export const Delete = ({ myClass }: myIcons) => (
   <svg
     width="14"
     height="16"
@@ -109,9 +113,9 @@ export const Delete = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      className={`${myClass}`}
       d="M2.83398 15.5C2.37565 15.5 1.98343 15.3369 1.65732 15.0108C1.33121 14.6847 1.16787 14.2922 1.16732 13.8333V3H0.333984V1.33333H4.50065V0.5H9.50065V1.33333H13.6673V3H12.834V13.8333C12.834 14.2917 12.6709 14.6842 12.3448 15.0108C12.0187 15.3375 11.6262 15.5006 11.1673 15.5H2.83398ZM4.50065 12.1667H6.16732V4.66667H4.50065V12.1667ZM7.83398 12.1667H9.50065V4.66667H7.83398V12.1667Z"
-      fill="black"
-      fillOpacity="0.2"
+      fill="#00000033"
     />
   </svg>
 );

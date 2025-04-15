@@ -1,6 +1,7 @@
 import Products from "@/components/Products";
 import ProgramOne from "@/components/ProgramOne";
 import ProgramTwo from "@/components/ProgramTwo";
+import { Suspense } from "react";
 
 async function getData() {
   try {
@@ -12,8 +13,7 @@ async function getData() {
     );
     const data = await response.json();
     return data;
-  } catch (error) {
-  }
+  } catch (error) {}
   return [];
 }
 
@@ -21,9 +21,11 @@ export default async function Home() {
   const heroData = await getData();
   return (
     <>
-      <Products heroContent={heroData} />
-      <ProgramOne />
-      <ProgramTwo/>
+      <Suspense>
+        <Products heroContent={heroData} />
+        <ProgramOne />
+        <ProgramTwo />
+      </Suspense>
     </>
   );
 }
